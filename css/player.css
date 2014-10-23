@@ -1,0 +1,99 @@
+#wrap {
+	max-width: 900px;
+	margin: auto;
+	margin-top: -50px;
+}
+#nick {
+    color: black;
+    font-family: Century Gothic;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+#lastseen {
+    float: right;
+    margin-top: -13px;
+}
+#lastseen b {
+	margin-right: 10px;
+}
+#pinfo {
+	width: 100px;
+	float: left;
+	margin: 5px;
+}
+#avatar {
+}
+#avatar img {
+	width: 75px;		
+	height: 75px;
+	margin: 10px;
+	border: 1px solid #333;
+}
+#middle {
+	margin: 5px;
+	border-bottom: 1px solid #404040;
+	padding: 5px;
+}
+#points {
+    background-color: #252525;
+    color: #a5e12d;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+#rank {
+	text-align: center;
+    background-color: #252525;
+    color: yellow;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+#team {
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+}
+#status {
+	text-align: center;
+}
+#aliases {
+	width: 350px;
+	min-height: 50px;
+}
+#badges {
+	width: 350px;
+	min-height: 50px;
+}
+#servers {
+	width: 400px;
+	clear: right;
+	min-height: 50px;
+}
+#games ul,
+#servers ul {
+	margin: 0;
+	padding-left: 20px;
+}
+#games {
+	width: 400px;
+	clear: right;
+	min-height: 50px;
+}
+#games li {
+    background-color: #525451;
+    display: inline-block;
+    list-style: none outside none;
+    margin-right: 10px;
+    padding: 3px;
+}
+#score_chart {
+	clear: both;
+	width: 100%;
+	height: 300px;
+}
+#time_chart {
+	width: 100%;
+	height: 300px;
+}

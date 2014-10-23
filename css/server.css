@@ -1,0 +1,146 @@
+#wrap {
+	max-width: 900px;
+	margin: auto;
+	margin-top: -50px;
+}
+#title {
+	
+}
+#rank {
+	float: left;
+    color: white;
+    font-family: Century Gothic;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	padding: 5px 10px;
+	height:50px;
+	background-color: #222;
+	border-right: 1px solid #626262;
+}
+#name {
+    color: white;
+    font-family: Century Gothic;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	padding: 5px;
+	height:50px;
+	background-color: rgba(255, 255, 255, 0.1);
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	border-bottom: 1px solid #565656;
+}
+#status {
+	padding: 0 12px;
+}
+#status.o1 {
+	background-color: #13EF13;
+	color: black;
+}
+#status.o0 {
+	background-color: #C11111;
+	color: white;
+}
+#address u {
+	display:none;
+}
+#address i {
+	color: #8d9a0a;
+}
+#sinfo {
+    margin-top: 14px;
+    width: 250px;
+}
+#map {
+	width: 250px;
+	margin-top: 1px;
+}
+#top_players {
+	width: 250px;
+	margin-top: 1px;
+	margin-bottom: 5px;
+}
+#tpm .list {
+    height: 300px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+#tpm .cut {
+    width: 154px;
+    overflow: hidden;
+}
+#tpm .cut:hover {
+    overflow: visible;
+    display: absolute;
+}
+#tpm .totp {
+    color: #a5e12d;
+    text-align: right;
+    border-top: 3px solid #a5e12d;
+    margin-top: 10px;
+}
+#map img {
+	width: 200px;
+	margin: auto;
+	border: 1px solid #111;
+	display: block;
+}
+#map .mname {
+	text-align: center;
+	font-weight: bold;
+	padding: 5px;
+}
+.right {
+    margin-top: 14px;
+}
+#players {
+    height: 236px;
+    width: 618px;
+}
+#players table {
+	width: 98%;
+	margin: auto;
+	margin-top: 5px;
+}
+#players .aw {
+	width: 50%;
+	height: 190px;
+	vertical-align: top;
+	border: 1px solid #3E3E3E;
+}
+#players .hw {
+	vertical-align: top;
+	border: 1px solid #3E3E3E;
+}
+#players .sp {
+	border: 1px solid #3E3E3E;
+	height: 30px;
+}
+#players h3 {
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+}
+#players h3.a {
+	background-color: #cc0000;
+}
+#players h3.h {
+	background-color: #3465a4;
+}
+#players .pl {
+	overflow-y: auto;
+	max-height: 157px;
+}
+
+#online_players {
+	clear:both;
+}
+#history_players {
+	height: 332px;
+	width: 618px;
+}
+div.in {
+	padding: 5px;
+}

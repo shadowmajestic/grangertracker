@@ -1,0 +1,79 @@
+html * {
+    box-sizing: border-box;
+}
+body {
+    background: url("../img/acid.png") no-repeat scroll 45px 5px #333333;
+    color: #EEE;
+    font-size: 12px;
+    font-family: "Century Gothic","Verdana","Tahoma",sans-serif;
+    padding: 110px 5px 0;
+}
+.win {
+    outline: 1px solid #232323;
+    border: 1px solid #404040;
+}
+#tohome {
+	width: 270px;
+	height: 60px;
+	position: absolute;
+	top: 5px;
+	left: 44px;
+	cursor: pointer;
+}
+#main {
+    width: calc(100% - 250px);
+    padding: 10px;
+    display: inline-block;
+}
+#right {
+    display: inline-block;
+    width: 245px;
+    vertical-align: top;
+    padding: 5px;
+}
+table {
+    border-collapse: collapse;   
+    width: 100%;
+}
+h2 {
+    font-size: 12px;
+}
+h2, th {
+    border-bottom: 3px solid #A5E12D;
+    color: #A5E12D;
+    text-align: left;
+	text-indent: 5px;
+}
+.c0 { color: #2e3436; }
+.c1 { color: #cc0000; }
+.c2 { color: #8ae234; }
+.c3 { color: #fce94f; }
+.c4 { color: #3465a4; }
+.c5 { color: #34e2e2; }
+.c6 { color: #ff6ea5; }
+.c7 { color: white; }
+.c8 { color: #c4a100; }
+.c9 { color: #cccccc; }
+.unnamed { color: black; }
+a {
+    color: #EEE;
+    text-decoration: none;
+}
+a[href]:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+th {
+    cursor: n-resize;
+}
+th.up {
+    cursor: s-resize;
+}
+.fl {
+	float: left;
+	margin-left: 10px;
+}
+.fr {
+	float: right;
+	margin-right: 10px;
+}

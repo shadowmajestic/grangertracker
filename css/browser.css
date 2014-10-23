@@ -1,0 +1,68 @@
+tr.with td {
+    font-weight: bold;
+}
+tr.server { display: none; }
+
+#tpm .list {
+    height: 300px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+#tpm .cut {
+    width: 154px;
+    overflow: hidden;
+}
+#tpm .cut:hover {
+    overflow: visible;
+    display: absolute;
+}
+#tpm .totp {
+    color: #a5e12d;
+    text-align: right;
+    border-top: 3px solid #a5e12d;
+    margin-top: 10px;
+}
+#tpm .count {
+    font-weight: bold;
+    padding-left: 30px;
+    padding-right: 15px;
+}
+#top {
+    height: 100px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: 504px;
+}
+#allply {
+	float: right;
+    height: 100px;
+    width: 500px;
+}
+#curply {
+	float: left;
+	margin-left: 10px;
+}
+#curply h2 {
+	margin: 5px 5px 8px;
+}
+#curply p {
+	margin : 0;
+	font-family: "Unica One",sans-serif;
+	text-align: center;
+}
+#curply p.t11 { color: #2b908f; }
+#curply p.gpp { color: #90ee7e; }
+#curply p.unv { color: #f45b5b; }
+#msg {
+	background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 10px 10px 10px 40px;
+    position: absolute;
+    top: 73px;
+    width: 610px;
+}
+#msg.warn {
+	background: url(/img/warn.png) no-repeat 10px rgba(255, 255, 255, 0.1);
+}
