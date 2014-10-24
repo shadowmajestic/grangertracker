@@ -68,6 +68,7 @@ $(function() {
 				title: {
 					text: 'Players'
 				},
+                min: 0,
 				plotLines: [{
 					value: 0,
 					width: 1,

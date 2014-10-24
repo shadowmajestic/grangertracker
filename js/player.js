@@ -41,7 +41,8 @@ $(function(){
 			yAxis: {
 				title: {
 					text: 'Score'
-				}
+				},
+                min: 0
 			},
 			plotOptions: {
 				area: {
@@ -86,7 +87,8 @@ $(function(){
 			yAxis: {
 				title: {
 					text: 'Minutes'
-				}
+				},
+                min: 0
 			},
 			plotOptions: {
 				area: {
