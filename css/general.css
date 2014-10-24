@@ -52,9 +52,9 @@ h2, th {
 .c5 { color: #34e2e2; }
 .c6 { color: #ff6ea5; }
 .c7 { color: white; }
-.c8 { color: #c4a100; }
+.c8 { color: black; }
 .c9 { color: #cccccc; }
-.unnamed { color: black; }
+.unnamed { color: white; font-style: italic; }
 a {
     color: #EEE;
     text-decoration: none;
