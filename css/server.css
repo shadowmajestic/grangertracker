@@ -143,5 +143,7 @@
 }
 div.in {
 	padding: 5px;
+}
+#players .sp div.in {
     float: left;
 }
