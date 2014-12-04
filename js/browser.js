@@ -1,7 +1,7 @@
 $(function() {
     function reload() {
         $("#browser tbody").html("");
-        $.getJSON(BACKEND + "/query.php",{player : 'top_score'}).done(function(res){
+        $.getJSON("/query.php",{player : 'top_score'}).done(function(res){
             var html = "";
             for(var p in res.data) {
                 var player = res.data[p];
@@ -14,7 +14,7 @@ $(function() {
             $("#tpm tbody").append(html);
             $("#tpm .count").text(res.count);
         }).fail(function(){});
-        $.getJSON(BACKEND + "/query.php",{browser : 'list'}).done(function(res){
+        $.getJSON("/query.php",{browser : 'list'}).done(function(res){
             var html = "";
             var delayer = 0;
             for(var s in res.data) {

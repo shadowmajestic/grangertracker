@@ -1,6 +1,6 @@
 $(function(){
 	$("body").load("/htm/server.htm", function(){
-		$.getJSON(BACKEND + "/query.php",{server: 'info', id: GET["s"]}).done(function(res){
+		$.getJSON("/query.php",{server: 'info', id: GET["s"]}).done(function(res){
 			var serv = res.data;
 			$("#name").html(serv.server_name.colorfy());
 			$("#rank").html("#"+serv.server_rank);

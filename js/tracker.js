@@ -1,0 +1,3 @@
+var Tracker = Class.extend({
+
+});

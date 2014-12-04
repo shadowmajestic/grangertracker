@@ -1,6 +1,6 @@
 $(function(){
 	$("body").load("/htm/player.htm", function(){
-		$.getJSON(BACKEND + "/query.php",{player : 'info', id: GET["p"]}).done(function(res){
+		$.getJSON("/proxy.php",{player : 'info', id: GET["p"]}).done(function(res){
 			$("#nick").html(res.inf.player_nick.colorfy());
 			$("#rank").html("#"+(res.inf.player_rank || " --- "));
 			$("#lastseen").html("<b>Updated:</b> "+res.inf.player_last_upd.split(" ")[0]);
