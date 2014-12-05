@@ -1,5 +1,8 @@
 <?php
-define("REMOTE","http://scanner.rn/");
+define("REMOTE","http://scanner.alepe.com/");
 define("KEY","4C1DTU83");
 $context  = stream_context_create(array('http' => array('user_agent' => 'Acidtu.be Tracker')));
-echo file_get_contents(REMOTE . "/general/" . "?key=" . KEY . "&" . $_SERVER["QUERY_STRING"], false, $context);
+$cat = $_GET["cat"];
+unset($_GET["cat"]);
+$string = http_build_query($_GET);
+echo file_get_contents(REMOTE . "/" . $cat . "/" . "?key=" . KEY . "&" . $string, false, $context);

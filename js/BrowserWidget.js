@@ -1,20 +1,14 @@
 define(
 	["Widget"],  //depends on
 	function(){
-		UI.TopWidget = UI.Widget.extend({
-            template : "top",
+		UI.BrowserWidget = UI.Widget.extend({
+            template : "browser",
             category : "general",
-            //---
-			max      : 10, //0 = Unlimited 
-			widget : function(transform) {
+            service  : "browser",
+			widget   : function(transform) {
 				var type = this.type;
                 var max = this.max;
-                this.service = "top_"+type+"="+max;
-				this.query(function(obj) {
-                    var data = { 
-                        title: 'Top '+max+' '+type,
-                        top : obj["top_"+type]
-                    };
+				this.query(function(data) {
                     var directives = {
                         title : {
                             text : function() {
