@@ -1,5 +1,5 @@
 <?php
-define("REMOTE","http://scanner.rn/");
+define("REMOTE","http://scan.acidtu.be/");
 define("KEY","4C1DTU83");
 $context  = stream_context_create(array('http' => array('user_agent' => 'Acidtu.be Tracker')));
 $cat = $_GET["cat"];
