@@ -1,19 +1,16 @@
+require(
+	["TopWidget","BrowserWidget"], //require
+	function(){
+		var topT = new UI.TopWidget("times");
+		topT.max = 10;
+		topT.appendTo("#right");
+		var browser = new UI.BrowserWidget();
+		browser.htmlTo("#main");
+	}
+);
+/*
 $(function() {
     function reload() {
-        $("#browser tbody").html("");
-        $.getJSON("/query.php",{player : 'top_score'}).done(function(res){
-            var html = "";
-            for(var p in res.data) {
-                var player = res.data[p];
-                html += "<tr class='nick'>";
-                html += "<td>"+((p*1)+1)+".</td>";
-                html += "<td><div class='cut' title='"+player.player_nick+"'><a href='?p="+player.player_main_id+"&name="+player.player_nick+"'>"+player.player_nick.colorfy()+"</a></div></td>";
-                html += "<td>"+player.player_score+"</td>";
-                html += "</tr>";
-            } 
-            $("#tpm tbody").append(html);
-            $("#tpm .count").text(res.count);
-        }).fail(function(){});
         $.getJSON("/query.php",{browser : 'list'}).done(function(res){
             var html = "";
             var delayer = 0;
@@ -111,3 +108,4 @@ $(function() {
       reload();
     },60000);
 });
+*/

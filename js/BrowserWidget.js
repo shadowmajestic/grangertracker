@@ -4,31 +4,100 @@ define(
 		UI.BrowserWidget = UI.Widget.extend({
             template : "browser",
             category : "general",
-            service  : "browser",
 			widget   : function(transform) {
+            	this.params["browser"] = "";
 				var type = this.type;
-                var max = this.max;
 				this.query(function(data) {
                     var directives = {
-                        title : {
-                            text : function() {
-                                return this.title;
-                            }
-                        },
-                        top : {
-                              topnick: {
-                                html: function() { 
-                                    return this.nick.colorfy(); 
+                        browser : {
+                              server: {
+								'class' : function() {
+									return this.ingame > 0 ? 'with' : '';
+								}
+							  },
+							  type : {
+                                text: function() { 
+                                    return this.type; 
                                 },
                                 href: function() { 
-                                    return "/?p="+this.id; 
+                                    return "";
                                 }
                               },
-                              topnum: {
-                                  text: function() { 
-                                    return this.time; 
-                                  }
-                              }
+							  game : {
+                                text: function() { 
+                                    return this.game || "base"; 
+                                },
+                                href: function() { 
+                                    return "";
+                                }
+                              },
+							  country : {
+                                text: function() { 
+                                    return this.country; 
+                                }
+                              },
+                              flag: {
+                                src : function() { 
+                                    return "img/countries/"+this.country.toLowerCase()+".png"; 
+                                },
+								alt : function() { 
+                                    return this.country; 
+                                },
+								title : function() { 
+                                    return this.country; 
+                                }
+                              },
+							  ip : {
+								title : function() { 
+                                    return this.ip; 
+                                },
+								text : function() { return ""; }
+							  },
+							  name : {
+								  'data-id' : function() {
+									  return this.id;
+								  },
+								  href : function() {
+									  return "?s="+this.id+"&"+this.name.decolorfy();
+								  },
+								  html: function(target) {
+									  return (this.name || "^8Unnamed").colorfy();
+								  }
+							  },
+							  players : {
+								  title : function() {
+									  return "spectators: "+this.spec;
+								  }
+							  },
+							  current : {
+								  href : function() {
+									  return this.ingame > 0 ? "#" : null;
+								  },
+								  text : function() {
+									  return this.ingame+" / "+this.max_players;
+								  }
+							  },
+							  bots : {
+								  text : function(target) {
+									  return this.bots > 0 ? "("+this.bots+")" : "";
+								  },
+								  title : function() {
+									  return this.bots > 0 ? "Bots" : "";
+								  }
+							  },
+							  map : {
+								  href : function() {
+									  return "#";
+								  },
+								  text : function() {
+									  return "atcs";
+								  }
+							  },
+							  rank : {
+								  text: function() {
+									  return "#"+this.rank;
+								  }
+							  }
                         }
                     };
                     transform(data, directives);

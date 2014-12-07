@@ -2,7 +2,7 @@ tr.with td {
     font-weight: bold;
 }
 tr.server { display: none; }
-
+b.country { display: none; }
 #tpm .list {
     height: 300px;
     overflow: hidden;
@@ -39,21 +39,6 @@ tr.server { display: none; }
     height: 100px;
     width: 500px;
 }
-#curply {
-	float: left;
-	margin-left: 10px;
-}
-#curply h2 {
-	margin: 5px 5px 8px;
-}
-#curply p {
-	margin : 0;
-	font-family: "Unica One",sans-serif;
-	text-align: center;
-}
-#curply p.t11 { color: #2b908f; }
-#curply p.gpp { color: #90ee7e; }
-#curply p.unv { color: #f45b5b; }
 #msg {
 	background-color: rgba(255, 255, 255, 0.1);
     border-radius: 8px;

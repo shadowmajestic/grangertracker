@@ -16,13 +16,23 @@
 <?php elseif(isset($_GET["p"])) : //Players ?>
 	<link rel="stylesheet" href="css/player.css" />
 	<script type="text/javascript" src="js/player.js"></script>
-<?php elseif(isset($_GET["b"])) : //Browser ?>
+<?php else : //Browser ?>
 	<link rel="stylesheet" href="css/browser.css" />
 	<script type="text/javascript" src="js/browser.js"></script>
-<?php else : ?>
-	<script type="text/javascript" src="js/test.js"></script>
 <?php endif; ?>
 </head>
 <body>
+	<header>
+		<a href="http://track.acidtu.be/" id="tohome"></a>
+		<div id="msg" class="warn">Granger Tracker is in Beta Stage.</div>
+	</header>
+	<aside id="left" class="win">
+	</aside>
+	<section id="main" class="win">
+	</section>
+	<aside id="right" class="win">
+	</aside>
+	<footer>
+	</footer>
 </body>
 </html>

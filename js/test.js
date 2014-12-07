@@ -1,8 +1,10 @@
 require(
 	["TopWidget"], //require
 	function(){
-		var top100 = new UI.TopWidget("times");
-		top100.max = 10;
-		top100.appendTo("body");
+		var topT = new UI.TopWidget("times");
+		topT.max = 10;
+		topT.appendTo("#right");
+		var browser = new UI.BrowserWidget();
+		
 	}
 );

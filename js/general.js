@@ -91,6 +91,9 @@ String.prototype.colorfy = function() {
     }
     return retval;
 };
+String.prototype.decolorfy = function() {
+	return this.replace(/\^[0-9]/g,"");
+};
 
 var $ = jQuery;
 var Class = chic.Class;

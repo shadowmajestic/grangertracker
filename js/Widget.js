@@ -4,18 +4,17 @@ define(function(){
 		type     : "",
         template : "",
         request  : "",
-        category : "",
+		category : "",
+		params	 : {},
         //Initialize the Widget with type (used to recycle widget)
 		init: function(type) {
+			if(undefined === type) type = "";
 			this.type = type;
 		},
-        //Return the URL to be called [PRIVATE]
-        getURL : function(){
-            return this.baseurl + "?cat=" + this.category + "&" + this.service;
-        },
         //Retrieve data from server
         query : function(callback) {
-            $.getJSON(this.getURL()).done(function(data) {
+			this.params.cat = this.category;
+            $.getJSON(this.baseurl, this.params).done(function(data) {
                 callback(data);
             });
         }, 

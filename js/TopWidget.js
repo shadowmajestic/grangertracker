@@ -9,7 +9,7 @@ define(
 			widget : function(transform) {
 				var type = this.type;
                 var max = this.max;
-                this.service = "top_"+type+"="+max;
+                this.params["top_"+type] = max;
 				this.query(function(obj) {
                     var data = { 
                         title: 'Top '+max+' '+type,
@@ -27,7 +27,7 @@ define(
                                     return this.nick.colorfy(); 
                                 },
                                 href: function() { 
-                                    return "/?p="+this.id; 
+                                    return "/?p="+this.id+"&"+this.nick.decolorfy();
                                 }
                               },
                               topnum: {
