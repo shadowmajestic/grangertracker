@@ -1,15 +1,14 @@
 define(function(){
 	UI.Widget = Class.extend({
         baseurl  : "/php/proxy.php",
-		type     : "",
+		initargs : "",
         template : "",
         request  : "",
 		category : "",
 		params	 : {},
-        //Initialize the Widget with type (used to recycle widget)
-		init: function(type) {
-			if(undefined === type) type = "";
-			this.type = type;
+        //Initialize the Widget with initparam (used to recycle widget)
+		init: function() {
+			this.initargs = arguments;
 		},
         //Retrieve data from server
         query : function(callback) {
@@ -19,16 +18,25 @@ define(function(){
             });
         }, 
         //Apply data and directives into the template and insert it [PRIVATE]
-        transform : function (selector, action, data, directives) {
+        transform : function (selector, action, data, directives, callback) {
             $.get("/htm/"+this.template+".htm").done(function(html){
-                $(selector)[action]($(html).render(data, directives));
+				var $html = $(html);
+				//When there is no child in template (single element), we
+				//insert the element into the selector and then apply render 
+				if($html.children().length === 0) {
+					$(selector)[action]($html).render(data, directives);
+				} else {
+					$html.render(data, directives);
+					$(selector)[action]($html);
+				}
+				if(callback !== undefined) callback($html);
             });
         },
         //Common code for "insert" methods [PRIVATE]
-        insert : function (selector, type) {
+        insert : function (selector, action) {
             var Widget = this;
-			this.widget(function(data, directives) {
-				Widget.transform(selector, type, data, directives);
+			this.widget(function(data, directives, callback) {
+				Widget.transform(selector, action, data, directives, callback);
 			});
         },
         //JQuery methods to insert HTML into the DOM

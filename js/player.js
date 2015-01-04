@@ -1,30 +1,10 @@
 require(
-	["ChartAreaWidget"], //require
+	["PlayerScoreChartWidget"], //require
 	function(){
-		var ScoreChart = new UI.ChartAreaWidget("score");
-		ScoreChart.days = 30;
-        ScoreChart.title = 'Player Score';
-        ScoreChart.data_title = 'Score';
-        ScoreChart.series = {
-            {
-                name: 'as Alien',
-                data: 'score_aliens',
-                color: '#D75151'
-            }, {
-                name: 'as Human',
-                data: 'score_humans',
-                color: '#517CD7'
-            },{
-                name: 'Total',
-                data: ScoreChart.sum,
-                color: '#47C343'
-            },{
-                name: 'Total',
-                data: ScoreChart.average,
-                color: '#47C343'
-            }]
-        };
-		ScoreChart.htmlTo("#main");
+		var ScoreChart = new UI.PlayerScoreChartWidget(GET["p"]);
+		ScoreChart.appendTo("#main");
+		//var ScoreChart2 = new UI.PlayerScoreChartWidget(20);
+		//ScoreChart2.appendTo("#main");
 	}
 );
 

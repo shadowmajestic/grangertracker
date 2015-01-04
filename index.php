@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/hcharts.js"></script>
 	<script type="text/javascript" src="/js/hchartheme.js"></script>
-	<script type="text/javascript" src="js/transparency.min.js"></script>
+	<script type="text/javascript" src="js/transparency.js"></script>
 	<script type="text/javascript" src="js/chic.js"></script>
 	<script type="text/javascript" src="js/require.js"></script>
 	<script type="text/javascript" src="js/general.js"></script>

@@ -7,7 +7,7 @@ define(
             //---
 			max      : 10, //0 = Unlimited 
 			widget : function(transform) {
-				var type = this.type;
+				var type = this.initargs[0];
                 var max = this.max;
                 this.params["top_"+type] = max;
 				this.query(function(obj) {

@@ -6,7 +6,6 @@ define(
             category : "general",
 			widget   : function(transform) {
             	this.params["browser"] = "";
-				var type = this.type;
 				this.query(function(data) {
                     var directives = {
                         browser : {
