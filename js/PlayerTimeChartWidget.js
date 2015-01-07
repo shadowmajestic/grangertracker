@@ -1,51 +1,51 @@
 define(
 	["ChartHistoryWidget"],  //depends on
 	function(){
-		PlayerScoreChartWidget = ChartHistoryWidget.extend({
+		PlayerTimeChartWidget = ChartHistoryWidget.extend({
 			category : "player",
-			subcategory : "score",
+			subcategory : "time",
             type : "areaspline",
 			config : function() {
 				var Widget = this;
 				return $.extend(this.sup(),{
 					title: {
-						text: 'Player Score'
+						text: 'Played Time'
 					},
-    				yAxis: {
+					yAxis: {
 						title: {
-							text: 'Score'
+							text: 'Minutes'
 						},
 						min: 0
 					},
+                    tooltip: {
+                        headerFormat: '{series.name}:<br>',
+                        pointFormat: '{point.x: %b %e}: {point.y} min.'
+                    },
 					series : [
 					{
-						name: 'Total Score',
+						name: 'Played Time',
 						data: function(){
-                            Widget.increment("score");
-							return Widget.getTimeSerie("score");
+							return Widget.getTimeSerie(Widget.subcategory);
 						},
-						color: '#47C343'
-					},
+						color: '#D75151'
+					}/*
 					{
 						name: 'as Alien',
 						data: 'score_aliens',
 						color: '#D75151'
-					}, 
-                    {
+					}, {
 						name: 'as Human',
 						data: 'score_humans',
 						color: '#517CD7'
-					},
-                    {
+					},{
 						name: 'Total',
 						data: this.sum,
 						color: '#47C343'
-					},
-                    {
+					},{
 						name: 'Total',
 						data: this.average,
 						color: '#47C343'
-				    }]
+				}*/]
 				});
 			},
 			setup : function() {

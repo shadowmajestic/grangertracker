@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="js/chic.js"></script>
 	<script type="text/javascript" src="js/require.js"></script>
 	<script type="text/javascript" src="js/general.js"></script>
+	<script type="text/javascript" src="js/UI.js"></script>
 <?php if(isset($_GET["s"])) : //Servers ?>
 	<link rel="stylesheet" href="css/server.css" />
 	<script type="text/javascript" src="js/server.js"></script>

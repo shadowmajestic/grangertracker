@@ -1,13 +1,16 @@
 define(
 	["Widget"],  //depends on
 	function(){
-		UI.BrowserWidget = UI.Widget.extend({
+		BrowserWidget = Widget.extend({
             template : "browser",
             category : "general",
-			widget   : function(transform) {
+            setup : function() {
             	this.params["browser"] = "";
-				this.query(function(data) {
-                    var directives = {
+            },
+			render : function(data, callback) {
+                callback({
+                    content: data,
+                    directives : {
                         browser : {
                               server: {
 								'class' : function() {
@@ -98,10 +101,9 @@ define(
 								  }
 							  }
                         }
-                    };
-                    transform(data, directives);
-				});
-			}
-		});
+                    }
+                });
+            }
+        });
 	}
 );

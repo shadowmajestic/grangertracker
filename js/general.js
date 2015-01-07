@@ -1,4 +1,5 @@
 Date.prototype.format=function(h){var g=/DD|D|dd|d|MM|m|n|YYYY|yyyy|Y|YY|yy|y|hh|h|g|HH|H|G|i|s|fff|ff|f|zz|z/g;var f="";var a;function c(i){if(i<10){return"0"+i}return i.toString()}function e(i){if(i<10){return"00"+i}if(i<100){return"0"+i}return i.toString()}for(;;){var d=g.lastIndex;var b=g.exec(h);f+=h.slice(d,b?b.index:h.length);if(!b){break}switch(b[0]){case"DD":case"D":case"dd":case"d":f+=c(this.getDate());break;case"j":f+=this.getDate();break;case"MM":case"m":f+=c(this.getMonth()+1);break;case"n":f+=this.getMonth()+1;break;case"YYYY":case"yyyy":case"Y":f+=this.getFullYear();break;case"YY":case"yy":case"y":f+=c(this.getFullYear()%100);break;case"hh":case"h":a=this.getHours()%12;if(a==0){a=12}f+=c(a);break;case"g":a=this.getHours()%12;if(a==0){a=12}f+=a;break;case"HH":case"H":f+=c(this.getHours());break;case"G":f+=this.getHours();break;case"i":f+=c(this.getMinutes());break;case"s":f+=c(this.getSeconds());break;case"f":f+=e(this.getMilliseconds()).charAt(0);break;case"ff":f+=e(this.getMilliseconds()).substr(0,2);break;case"fff":f+=e(this.getMilliseconds());break;case"z":a=this.getTimezoneOffset()/60;f+=((a>=0)?"+":"-")+Math.floor(Math.abs(a));break;case"zz":a=this.getTimezoneOffset()/60;f+=((a>=0)?"+":"-")+c(Math.floor(Math.abs(a)));break}}return f};Date.prototype.isValid=function(){return this instanceof Date&&isFinite(this)};Date.prototype.isYMD=function(b){var a=this.isValid();if(a){a=false;var c=b.match(/(\d{4}).(\d{2}).(\d{2})/);if(c){if(this.format("Ymd")==""+c[1]+c[2]+c[3]){a=true}}if(!a){c=b.match(/(\d{2}).(\d{2}).(\d{4})/);if(c){if(this.format("dmY")==""+c[1]+c[2]+c[3]){a=true}}}}return a};
+jQuery.delay = function(t,f){ if(f == undefined) { var D = new Date(); do { var d = new Date(); } while(d-D < t); } else setTimeout(f,t); return jQuery; }
 //LEPE: Shortcut for jsonp + POST. Similar to $.getJSON
 jQuery.postJSON = function(url, data, func) { return $.post(url+(url.indexOf("?") === -1 ? "?" : "&")+"callback=?", data, func, "json"); };
 //LEPE: @overrride. It will automatically add "callback=?" to the URL as in JQuery < 1.6
@@ -97,7 +98,8 @@ String.prototype.decolorfy = function() {
 
 var $ = jQuery;
 var Class = chic.Class;
-var UI = {};
+
 requirejs.config({
     baseUrl: '/js'
 });
+
