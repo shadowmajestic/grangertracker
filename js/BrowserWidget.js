@@ -9,7 +9,7 @@ define(
             },
 			render : function(data, callback) {
                 callback({
-                    content: data,
+                    models: data,
                     directives : {
                         browser : {
                               server: {

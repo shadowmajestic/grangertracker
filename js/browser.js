@@ -6,6 +6,7 @@ require(
 		var topT = new TopWidget("times");
 		$("#main").appendWidget(browser);
 		$("#right").appendWidget(topT);
-        $("body").doWidgets();
+        //$("#main").doWidgets(); <-- selective same or any wrapper
+        $.ui.doWidgets(); //<--global
 	}
 );

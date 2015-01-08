@@ -14,7 +14,7 @@ define(
 				var type = this.initargs[0];
                 var max = this.max;
                 callback({
-                    content : { 
+                    models: { 
                         title: 'Top '+max+' '+type,
                         top : data["top_"+type]
                     },

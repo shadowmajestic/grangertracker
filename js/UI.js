@@ -10,24 +10,29 @@ var UI = Class.extend({
     _query : function(widget, callback) {
         widget.params.cat = widget.category;
         $.getJSON(this.baseurl, widget.params).done(function(data) {
-            callback(data);
+            callback(widget, data);
         });
     },
     _getTemplate : function(widget, callback) {
         $.get("/htm/"+widget.template+".htm").done(function(res){
             widget.html = res;
-            callback();
+            callback(widget);
         });
     },
     //Apply data and directives into the template and insert it 
     _transform : function(widget, set, callback) {
-        $html = $(widget.html);
+        var $html = $(widget.html);
+		//Create unique ID:
+        var elems = $("[id^='"+widget.prefix+"']").length;
+		widget.widget_id = widget.prefix+(elems);
+		$html.attr("id",widget.widget_id);
         //When there is no child in template (single element), we
         //insert the element into the selector and then apply render 
         if($html.children().length === 0) {
-            $(widget.parent)[widget.action]($html).render(set.content, set.directives);
+            $(widget.parent)[widget.action]($html);
+			if(set !== null) $(widget.parent).render(set.models, set.directives);
         } else {
-            $html.render(set.content, set.directives);
+			if(set !== null) $html.render(set.models, set.directives);
             $(widget.parent)[widget.action]($html);
         }
         if(callback !== undefined) callback($html);
@@ -46,27 +51,30 @@ var UI = Class.extend({
         var ui = this;
         for(var w in this.widgets) {
             var widget = ui.widgets[w];
-            ui._getTemplate(widget, function() {
-                widget.setup();
-                ui._query(widget, function(data) {
-                    widget.render(data,function(set, callback) {
-                        ui._transform(widget, set, callback);
-                    });
-                });
-            });
+			if($parent === undefined || $parent.is(widget.parent) || $parent.find(widget.parent).length) {
+				//TODO: place "loading" in parent
+				ui._getTemplate(widget, function(widget) {
+					widget.setup();
+					ui._query(widget, function(widget, data) {
+						widget.render(data,function(set, callback) {
+							ui._transform(widget, set, callback);
+						});
+					});
+				});
+			}
         }
     }
 });
 jQuery.ui = new UI();
 jQuery.fn.appendWidget = function(widget) {
     return jQuery.ui.addWidget("append", widget, this);
-}
+};
 jQuery.fn.prependWidget = function(widget) {
     return jQuery.ui.addWidget("prepend", widget, this);
-}
+};
 jQuery.fn.addWidget = function(widget) {
     return jQuery.ui.addWidget("html", widget, this);
-}
+};
 jQuery.fn.doWidgets = function() {
     return jQuery.ui.doWidgets($(this));
-}
+};

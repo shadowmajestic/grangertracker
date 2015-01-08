@@ -4,7 +4,7 @@ require(
 		var ScoreChart = new PlayerScoreChartWidget(GET["p"]);
 		var TimeChart = new PlayerTimeChartWidget(GET["p"]);
         $("#main").appendWidget(ScoreChart).appendWidget(TimeChart);
-        //$("body").render(); <--specific
-        $.ui.render(); //<--global
+        //$("#main").doWidgets(); <-- selective same or any wrapper
+        $.ui.doWidgets(); //<--global
 	}
 );

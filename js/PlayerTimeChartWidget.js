@@ -2,20 +2,20 @@ define(
 	["ChartHistoryWidget"],  //depends on
 	function(){
 		PlayerTimeChartWidget = ChartHistoryWidget.extend({
-			category : "player",
-			subcategory : "time",
-            type : "areaspline",
+			category 	: "player",
+			subcategory : ["time_humans","time_aliens"],
+            type 		: "column",
+			prefix   	: "player_time_chart_",
 			config : function() {
 				var Widget = this;
-				return $.extend(this.sup(),{
+				return $.extend(true, this.sup(),{
 					title: {
 						text: 'Played Time'
 					},
 					yAxis: {
 						title: {
 							text: 'Minutes'
-						},
-						min: 0
+						}
 					},
                     tooltip: {
                         headerFormat: '{series.name}:<br>',
@@ -23,29 +23,35 @@ define(
                     },
 					series : [
 					{
-						name: 'Played Time',
+						name: 'Total Played Time',
 						data: function(){
-							return Widget.getTimeSerie(Widget.subcategory);
+							return Widget.sumTimeSerie(["time_aliens","time_humans"],"time");
 						},
-						color: '#D75151'
-					}/*
+						color: '#47C343'
+					},
 					{
 						name: 'as Alien',
-						data: 'score_aliens',
-						color: '#D75151'
-					}, {
+						data: function(){
+							return Widget.getTimeSerie("time_aliens","time");
+						},
+						color: '#D75151',
+						visible: false
+					}, 
+                    {
 						name: 'as Human',
-						data: 'score_humans',
-						color: '#517CD7'
+						data: function(){
+							return Widget.getTimeSerie("time_humans","time");
+						},
+						color: '#517CD7',
+						visible: false
 					},{
-						name: 'Total',
-						data: this.sum,
-						color: '#47C343'
-					},{
-						name: 'Total',
-						data: this.average,
-						color: '#47C343'
-				}*/]
+						name: 'Average Played Time',
+						data: function(){
+							return Widget.avgTimeSerie(["time_aliens","time_humans"],"time");
+						},
+						color: '#ED9419',
+						visible: false
+					}]
 				});
 			},
 			setup : function() {

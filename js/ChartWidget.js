@@ -4,56 +4,66 @@ define(
 		ChartWidget = Widget.extend({
             template : "chart",
             type     : "line", //line, column, bar, pie, area, spline, areaspline, scatter
+			prefix   : "chart_",
+			//----- PRIVATE -------
+			chart	 : null, //to place highchart object
 			config   : function(){
 				return {
 					chart: {
 						type: this.type
+					},
+					yAxis: {
+						min: 0
 					},
     				title : ""
 				};
 			},
 			data : {}, //private
             //-------------- Custom -----------
+			getSerie : function(serie, field) {
+				if(field === undefined) field = serie;
+				var seriearr = [];
+				for(var d in this.data[serie]) {
+					var row = this.data[serie][d];
+					seriearr.push(row[field]);
+				}
+				return seriearr;
+			},
             //Totalize data
-            sum      : function() {
-
+            sumSerie  : function(sumarr, field) {
+				if(field === undefined) field = serie;
+				var seriearr = null;
+				for(var s in sumarr) {
+					var serie = sumarr[s];
+					if(seriearr === null) {
+						seriearr = this.getSerie(serie, field);
+					} else {
+						seriearr = arraysSum(seriearr,this.getSerie(serie, field));
+					}
+				}
+				return seriearr;
             },
             //Average data
-            average  : function() {
-
+            avgSerie  : function(avgarr, field) {
+				var sumarr = this.sumSerie(avgarr, field);
+				for(var s in sumarr) {
+					sumarr[s] = sumarr[s] / avgarr.length;
+				}
+				return sumarr;
             },
             //Incremental data
-            increment : function(serie) {
+            incSerie : function(seriearr) {
                 var accum = 0;
-				for(var d in data[this.subcategory]) {
-					var row = data[this.subcategory][d];
-                    accum += row[serie];
-					row[serie] = accum;
+				for(var d in seriearr) {
+                    accum += seriearr[d];
+					seriearr[d] = accum;
 				}
+				return seriearr;
             },
-			getSerie : function(serie) {
-				var seriearr = [];
-				for(var d in data[this.subcategory]) {
-					var row = data[this.subcategory][d];
-					seriearr.push(row[serie]);
-				}
-				return seriearr;
-			},
-			getTimeSerie : function(serie) {
-				var seriearr = [];
-				for(var d in data[this.subcategory]) {
-					var row = data[this.subcategory][d];
-                    if(row.date !== undefined) {
-                        row.date = new Date(row.date).valueOf();
-                    }
-					seriearr.push([row.date,row[serie]]);
-				}
-				return seriearr;
-			},
-			//---------------------------------
+			//------------ Overrrides ---------------------
 			render : function(data, callback) {
+				var widget = this;
 				var config = this.config();
-				var subcategory =  this.subcategory;
                 this.data = data;
                 for(var s in config.series) {
                     if($.isFunction(config.series[s].data)) {
@@ -64,22 +74,9 @@ define(
                     config.xAxis.categories = config.xAxis.categories();
                 }
                 //get series and translate data
-				callback({
-                    content : {
-                        chart : ""
-                    },
-                    directives : {
-                        chart : {
-                            html : function() {
-                                 return this.chart;
-                            }
-                        }
-                    },
-                }, function($html) {
-                    var elems = $("#"+subcategory).length;
-                    $.delay(100,function(){
-                        $html.attr("id",subcategory+(elems > 0 ? elems : "")).highcharts(config);
-                    });
+				callback(null, function($html) {
+					$html.highcharts(config);
+					widget.chart = $html.highcharts();
 				});
 			}
 		});
